@@ -23,6 +23,7 @@ public class MovePlayer : Character
 
     public void Jump(InputAction.CallbackContext context)
     {
+        
         if (checkGround() && context.performed)
         {
             _rb.velocity = new Vector2(_rb.velocity.x,ForceJump);
@@ -34,6 +35,7 @@ public class MovePlayer : Character
     }
     private void move()
     {
+        
         _rb.velocity = new Vector2(horizontal * Time.fixedDeltaTime * this.MoveSpeed, _rb.velocity.y);
         if (horizontal > 0 && !isRight)
         {
@@ -56,5 +58,6 @@ public class MovePlayer : Character
     public void Move(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<Vector2>().x;
+        
     }
 }

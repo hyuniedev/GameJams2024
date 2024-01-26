@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "Jump",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "8bb4ad6d-8bc5-4bf3-8f15-15cfa4b43bde",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -81,26 +81,59 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "731a7b06-3b29-4b73-87a5-554953df82e9",
-                    "path": "<Keyboard>/w",
+                    "name": "2D Vector",
+                    "id": "c42dd01e-95e9-4c7c-8d91-2bbb382d5253",
+                    "path": "2DVector",
                     "interactions": "",
                     "processors": "",
-                    "groups": "adwsKey",
+                    "groups": "",
                     "action": "Jump",
-                    "isComposite": false,
+                    "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "6ab5a3f6-8dee-49b6-9e86-1feede2b9798",
+                    "name": "Up",
+                    "id": "0fe9439c-5da9-4dfb-80f5-1a10d14bffba",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Up",
+                    "id": "36eab565-22ee-459b-ac8b-4bb9ec734d36",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "adwsKey",
+                    "groups": "",
                     "action": "Jump",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "197f26c7-2d88-42e3-a0b5-dcd78bfff120",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Down",
+                    "id": "e724b6da-ac24-41c1-a87d-fb888ed840e7",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
