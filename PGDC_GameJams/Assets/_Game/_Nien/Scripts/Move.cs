@@ -20,7 +20,7 @@ public class Move : Character
         _layerMask = LayerMask.GetMask("Ground");
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         DiChuyen();
         Nhay();
@@ -76,18 +76,18 @@ public class Move : Character
     private void OnEnable()
     {
         input.Enable();
-        input.Move.Move.performed += OnMovePlayerEnter;
-        input.Move.Move.canceled += OnMovePlayerExit;
-        input.Move.Jump.performed += OnJumpingEnter;
-        input.Move.Jump.canceled += OnJumpingExit;
+        input.Player.Movement.performed += OnMovePlayerEnter;
+        input.Player.Movement.canceled += OnMovePlayerExit;
+        input.Player.Movement.performed += OnJumpingEnter;
+        input.Player.Movement.canceled += OnJumpingExit;
     }
 
     private void OnDisable()
     {
         input.Disable();
-        input.Move.Move.performed -= OnMovePlayerEnter;
-        input.Move.Move.canceled -= OnMovePlayerExit;
-        input.Move.Jump.performed -= OnJumpingEnter;
-        input.Move.Jump.canceled -= OnJumpingExit;
+        input.Player.Movement.performed -= OnMovePlayerEnter;
+        input.Player.Movement.canceled -= OnMovePlayerExit;
+        input.Player.Movement.performed -= OnJumpingEnter;
+        input.Player.Movement.canceled -= OnJumpingExit;
     }
 }
