@@ -13,15 +13,18 @@ public class Move : Character
     private bool isGround;
     private LayerMask _layerMask;
     [SerializeField] private Rigidbody2D rb;
+    private String tagPlayer = null;
 
     private void Awake()
     {
         input = new InputSystem();
         _layerMask = LayerMask.GetMask("Ground");
+        tagPlayer = this.tag;
     }
 
     private void FixedUpdate()
     {
+        Debug.Log(tagPlayer);
         DiChuyen();
         Nhay();
     }
@@ -76,18 +79,60 @@ public class Move : Character
     private void OnEnable()
     {
         input.Enable();
-        input.Player.Movement.performed += OnMovePlayerEnter;
-        input.Player.Movement.canceled += OnMovePlayerExit;
-        input.Player.Movement.performed += OnJumpingEnter;
-        input.Player.Movement.canceled += OnJumpingExit;
+        if (tagPlayer.Equals("Player"))
+        {
+            input.Player.Player1.performed += OnMovePlayerEnter;
+            input.Player.Player1.canceled += OnMovePlayerExit;
+            input.Player.Player1.performed += OnJumpingEnter;
+            input.Player.Player1.canceled += OnJumpingExit;
+        }else if (tagPlayer.Equals("Player2"))
+        {
+            input.Player.Player2.performed += OnMovePlayerEnter;
+            input.Player.Player2.canceled += OnMovePlayerExit;
+            input.Player.Player2.performed += OnJumpingEnter;
+            input.Player.Player2.canceled += OnJumpingExit;
+        }else if (tagPlayer.Equals("Player3"))
+        {
+            input.Player.Player3.performed += OnMovePlayerEnter;
+            input.Player.Player3.canceled += OnMovePlayerExit;
+            input.Player.Player3.performed += OnJumpingEnter;
+            input.Player.Player3.canceled += OnJumpingExit;
+        }else if (tagPlayer.Equals("Player4"))
+        {
+            input.Player.Player4.performed += OnMovePlayerEnter;
+            input.Player.Player4.canceled += OnMovePlayerExit;
+            input.Player.Player4.performed += OnJumpingEnter;
+            input.Player.Player4.canceled += OnJumpingExit;
+        }
     }
 
     private void OnDisable()
     {
         input.Disable();
-        input.Player.Movement.performed -= OnMovePlayerEnter;
-        input.Player.Movement.canceled -= OnMovePlayerExit;
-        input.Player.Movement.performed -= OnJumpingEnter;
-        input.Player.Movement.canceled -= OnJumpingExit;
+        if (tagPlayer.Equals("Player"))
+        {
+            input.Player.Player1.performed -= OnMovePlayerEnter;
+            input.Player.Player1.canceled -= OnMovePlayerExit;
+            input.Player.Player1.performed -= OnJumpingEnter;
+            input.Player.Player1.canceled -= OnJumpingExit;
+        }else if (tagPlayer.Equals("Player2"))
+        {
+            input.Player.Player2.performed -= OnMovePlayerEnter;
+            input.Player.Player2.canceled -= OnMovePlayerExit;
+            input.Player.Player2.performed -= OnJumpingEnter;
+            input.Player.Player2.canceled -= OnJumpingExit;
+        }else if (tagPlayer.Equals("Player3"))
+        {
+            input.Player.Player3.performed -= OnMovePlayerEnter;
+            input.Player.Player3.canceled -= OnMovePlayerExit;
+            input.Player.Player3.performed -= OnJumpingEnter;
+            input.Player.Player3.canceled -= OnJumpingExit;
+        }else if (tagPlayer.Equals("Player4"))
+        {
+            input.Player.Player4.performed -= OnMovePlayerEnter;
+            input.Player.Player4.canceled -= OnMovePlayerExit;
+            input.Player.Player4.performed -= OnJumpingEnter;
+            input.Player.Player4.canceled -= OnJumpingExit;
+        }
     }
 }
