@@ -31,6 +31,9 @@ public class Move : Character
         if (CheckGround() && jumpingVec.y > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x,jumpingVec.y * ForceJump);
+        }else if (!CheckGround() && jumpingVec.y < 0)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpingVec.y * (ForceJump / 2));
         }
     }
     private void DiChuyen()
