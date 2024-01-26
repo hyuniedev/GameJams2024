@@ -28,9 +28,36 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             ""id"": ""e716af43-5780-483c-b8a2-9943e4bc3e54"",
             ""actions"": [
                 {
-                    ""name"": ""Movement"",
+                    ""name"": ""Player1"",
                     ""type"": ""Value"",
                     ""id"": ""d85746b0-5ec1-4c5e-ba93-7f499518500f"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Player2"",
+                    ""type"": ""Value"",
+                    ""id"": ""971409fd-ff96-453d-a9f3-5c6e67e5b16a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Player3"",
+                    ""type"": ""Value"",
+                    ""id"": ""fcdec74e-6a9c-4b03-ae8c-2a8ef49e4464"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Player4"",
+                    ""type"": ""Value"",
+                    ""id"": ""18b40de9-20d2-4e71-8563-fefe36d7c62d"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -45,7 +72,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Player1"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -56,7 +83,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""adwsKey"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Player1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -67,7 +94,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""adwsKey"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Player1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -78,7 +105,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""adwsKey"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Player1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -89,62 +116,172 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""adwsKey"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Player1"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""Arrow"",
-                    ""id"": ""1a8f490b-9e24-4e08-8f65-ec2afc599a69"",
+                    ""id"": ""68a9018a-77a5-4a61-9895-382d779afd2b"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Player2"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""a8803426-aea0-4668-87eb-0be541df9601"",
+                    ""id"": ""dbed7d7b-1a55-4894-a880-bc53ee67f698"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""arrow"",
-                    ""action"": ""Movement"",
+                    ""groups"": ""adwsKey"",
+                    ""action"": ""Player2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""61b03a07-30a2-43de-afc5-48fbf8ebe399"",
+                    ""id"": ""2c4e6bf2-5d0b-4dd2-a4b9-4d5a80685a9f"",
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""arrow"",
-                    ""action"": ""Movement"",
+                    ""groups"": ""adwsKey"",
+                    ""action"": ""Player2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""3f49128c-374b-48f9-b219-cad594e925b3"",
+                    ""id"": ""837e5ed6-97ea-4de5-a105-9736de8b772b"",
                     ""path"": ""<Keyboard>/leftArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""arrow"",
-                    ""action"": ""Movement"",
+                    ""groups"": ""adwsKey"",
+                    ""action"": ""Player2"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""4f38caba-e70d-414a-8d10-9a9571eef633"",
+                    ""id"": ""e0c4865e-e0ba-4114-9bb5-ca18270845d4"",
                     ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""arrow"",
-                    ""action"": ""Movement"",
+                    ""groups"": ""adwsKey"",
+                    ""action"": ""Player2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""JIKL"",
+                    ""id"": ""58c9fe4f-805b-4fd9-a2ea-5b371264f48d"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Player3"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""0e94535f-8217-4077-a958-7ebd916f71a5"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""adwsKey"",
+                    ""action"": ""Player3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""598e136d-8750-4a63-a937-21795495084c"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""adwsKey"",
+                    ""action"": ""Player3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""5c736af4-136a-4fe4-bc7d-b4de9d974f41"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""adwsKey"",
+                    ""action"": ""Player3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""b6dd38b5-10e5-49a8-a5d2-6fb1a4129a92"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""adwsKey"",
+                    ""action"": ""Player3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""4865"",
+                    ""id"": ""00d29edd-ac85-4d7f-8751-2954db4afede"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Player4"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""6b12da26-9b85-4763-a403-616ec25b9f61"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""adwsKey"",
+                    ""action"": ""Player4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""88ad3998-6e73-4a41-bcfe-355457108923"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""adwsKey"",
+                    ""action"": ""Player4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e2dc54aa-48bd-41db-838c-1eeef65ab96b"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""adwsKey"",
+                    ""action"": ""Player4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""893fe5bf-2def-495f-88b0-6713971ba22a"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""adwsKey"",
+                    ""action"": ""Player4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -178,7 +315,10 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_Player1 = m_Player.FindAction("Player1", throwIfNotFound: true);
+        m_Player_Player2 = m_Player.FindAction("Player2", throwIfNotFound: true);
+        m_Player_Player3 = m_Player.FindAction("Player3", throwIfNotFound: true);
+        m_Player_Player4 = m_Player.FindAction("Player4", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,12 +380,18 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_Player1;
+    private readonly InputAction m_Player_Player2;
+    private readonly InputAction m_Player_Player3;
+    private readonly InputAction m_Player_Player4;
     public struct PlayerActions
     {
         private @InputSystem m_Wrapper;
         public PlayerActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        public InputAction @Player1 => m_Wrapper.m_Player_Player1;
+        public InputAction @Player2 => m_Wrapper.m_Player_Player2;
+        public InputAction @Player3 => m_Wrapper.m_Player_Player3;
+        public InputAction @Player4 => m_Wrapper.m_Player_Player4;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -255,16 +401,34 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-            @Movement.started += instance.OnMovement;
-            @Movement.performed += instance.OnMovement;
-            @Movement.canceled += instance.OnMovement;
+            @Player1.started += instance.OnPlayer1;
+            @Player1.performed += instance.OnPlayer1;
+            @Player1.canceled += instance.OnPlayer1;
+            @Player2.started += instance.OnPlayer2;
+            @Player2.performed += instance.OnPlayer2;
+            @Player2.canceled += instance.OnPlayer2;
+            @Player3.started += instance.OnPlayer3;
+            @Player3.performed += instance.OnPlayer3;
+            @Player3.canceled += instance.OnPlayer3;
+            @Player4.started += instance.OnPlayer4;
+            @Player4.performed += instance.OnPlayer4;
+            @Player4.canceled += instance.OnPlayer4;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
-            @Movement.started -= instance.OnMovement;
-            @Movement.performed -= instance.OnMovement;
-            @Movement.canceled -= instance.OnMovement;
+            @Player1.started -= instance.OnPlayer1;
+            @Player1.performed -= instance.OnPlayer1;
+            @Player1.canceled -= instance.OnPlayer1;
+            @Player2.started -= instance.OnPlayer2;
+            @Player2.performed -= instance.OnPlayer2;
+            @Player2.canceled -= instance.OnPlayer2;
+            @Player3.started -= instance.OnPlayer3;
+            @Player3.performed -= instance.OnPlayer3;
+            @Player3.canceled -= instance.OnPlayer3;
+            @Player4.started -= instance.OnPlayer4;
+            @Player4.performed -= instance.OnPlayer4;
+            @Player4.canceled -= instance.OnPlayer4;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -302,6 +466,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     }
     public interface IPlayerActions
     {
-        void OnMovement(InputAction.CallbackContext context);
+        void OnPlayer1(InputAction.CallbackContext context);
+        void OnPlayer2(InputAction.CallbackContext context);
+        void OnPlayer3(InputAction.CallbackContext context);
+        void OnPlayer4(InputAction.CallbackContext context);
     }
 }
