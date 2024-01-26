@@ -2,27 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class MovePlayer : Character
 {
     [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private LayerMask _layerMask;
-    private Rigidbody2D rb;
-    private bool isGround;
+    private LayerMask _layerMask;
     private bool isRight;
     private float horizontal;
     private float vertical;
 
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        isGround = checkGround();
-        jump();
+        _layerMask = LayerMask.GetMask("Ground");
     }
 
     private void FixedUpdate()
@@ -30,36 +21,29 @@ public class MovePlayer : Character
         move();
     }
 
-    private void jump()
+    public void Jump(InputAction.CallbackContext context)
     {
-        if (isGround)
+        if (checkGround() && context.performed)
         {
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                _rb.AddForce(Vector2.up * ForceJump);
-            }
+            _rb.velocity = new Vector2(_rb.velocity.x,ForceJump);
+        }
+        if(context.canceled && _rb.velocity.y > 0f)
+        {
+            _rb.velocity = new Vector2(_rb.velocity.x, _rb.velocity.y * 0.5f);
         }
     }
     private void move()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        if (Mathf.Abs(horizontal) > 0)
+        _rb.velocity = new Vector2(horizontal * Time.fixedDeltaTime * this.MoveSpeed, _rb.velocity.y);
+        if (horizontal > 0 && !isRight)
         {
-            _rb.velocity = new Vector2(horizontal * Time.fixedDeltaTime * this.MoveSpeed, _rb.velocity.y);
-            if (horizontal > 0)
-            {
-                isRight = true;
-            }
-            else
-            {
-                isRight = false;
-            }
-            transform.rotation = Quaternion.Euler(new Vector3(0,isRight?0:180,0));
+            isRight = true;
         }
-        else
+        else if(horizontal < 0 && isRight)
         {
-            _rb.velocity = new Vector2(0,_rb.velocity.y);
+            isRight = false;
         }
+        transform.rotation = Quaternion.Euler(new Vector3(0,isRight?0:180,0));
     }
     
     private bool checkGround()
@@ -67,5 +51,10 @@ public class MovePlayer : Character
         Debug.DrawLine(this.transform.position,this.transform.position + Vector3.down * 1.1f,Color.red);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.1f, _layerMask);
         return hit.collider != null;
+    }
+
+    public void Move(InputAction.CallbackContext context)
+    {
+        horizontal = context.ReadValue<Vector2>().x;
     }
 }
