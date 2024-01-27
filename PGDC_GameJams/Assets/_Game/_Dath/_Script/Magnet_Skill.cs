@@ -4,28 +4,40 @@ using UnityEngine;
 
 public class Magnet_Skill : Skill
 {
+    bool _active = false;
+    [SerializeField] float _radius = 5f;
+    [SerializeField] float _force = 5f;
+    GameObject _player;
+    float _time = 3f;
+    bool _spawned = false;
+    float _timeCount = 0f;
+    GameObject magnet;
+    GameObject _handPos;
 
-    float _force = 4f;
-
+    [SerializeField] private GameObject _magnetGameObject;
     private void Update()
     {
-
-    }
-    protected override void UseSkill(GameObject player)
-    {
-        Debug.Log("Magnet");
-        // lấy vị trí tay của player
-        Transform handPos = player.GetComponent<PlayerMoverment>().handPos.transform;
-        // lấy player ở phía trước bị chiếu tia
-        // var playerScript = player.GetComponent<PlayerMoverment>();
-        GameObject playerGotHit = GetPlayerInFront(handPos);
-        if (playerGotHit != null)
+        if (!_active) return;
+        if (!_spawned)
         {
-            var rb = playerGotHit.GetComponent<Rigidbody2D>();
-            // thêm lực ngược lại với hướng của player vào player bị chiếu tia
-            rb.AddForce(GetDirectionOfPlayer(playerGotHit) * _force, ForceMode2D.Impulse);
+            _handPos = _player.GetComponent<PlayerMoverment>().handPos.gameObject;
+            magnet = Instantiate(_magnetGameObject, _handPos.transform);
+            _spawned = true;
         }
 
+        _timeCount += Time.deltaTime;
+        if (_timeCount >= _time)
+        {
+            _active = false;
+            // Hết thời gian sẽ hủy magnet
+            Destroy(magnet);
+        }
+    }
+
+    protected override void UseSkill(GameObject player)
+    {
+        _active = true;
+        _player = player;
     }
 
 }
