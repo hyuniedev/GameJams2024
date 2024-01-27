@@ -63,7 +63,9 @@ public class Skill : MonoBehaviour
         {
             isCompareTag = true;
             UseSkill(other.gameObject);
+            Destroy(gameObject);
         }
     }
+
 
 }

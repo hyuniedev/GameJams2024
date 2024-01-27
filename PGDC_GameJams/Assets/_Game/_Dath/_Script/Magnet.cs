@@ -36,23 +36,19 @@ public class Magnet : MonoBehaviour
 
                 if (facingRight)
                 {
-                    Debug.Log("facingRight");
                     float distanceX = playerVictim.transform.position.x - transform.position.x;
                     if (distanceX > 0)
                     {
 
                         rb.velocity = direction * _strength;
-                        Debug.Log("distanceX > 0");
                         Debug.Log(rb.velocity);
                     }
                 }
                 if (!facingRight)
                 {
-                    Debug.Log("facingLeft");
                     float distanceX = playerVictim.transform.position.x - transform.position.x;
                     if (distanceX < 0)
                     {
-                        Debug.Log("distanceX < 0");
                         rb.velocity = direction * _strength;
                         Debug.Log(rb.velocity);
                     }
