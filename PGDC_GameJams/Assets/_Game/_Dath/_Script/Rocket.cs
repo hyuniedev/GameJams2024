@@ -45,8 +45,9 @@ public class Rocket : Skill
 
     new void OnTriggerEnter2D(Collider2D other)
     {
-        if (_timer >= _time)
+        if (_timer > _time)
         {
+
             if (other.gameObject.CompareTag("Player"))
             {
                 ShockWave(other.transform, _radius, _time, _boomForce);

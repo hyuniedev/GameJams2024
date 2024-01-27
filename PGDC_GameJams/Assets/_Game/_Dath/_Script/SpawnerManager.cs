@@ -6,7 +6,7 @@ public class SpawnerManager : MonoBehaviour
 {
     [Header("Time Spawn")]
     float _timer = 0;
-    private float _timeSpawn = 20f;
+    private float _timeSpawn = 5f;
 
     //
     [Range(10, 200)][SerializeField] private float _distanceSpawn;

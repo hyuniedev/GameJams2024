@@ -16,7 +16,7 @@ public class SpeedUp_Skill : MonoBehaviour
         _timeSpeedUp -= Time.deltaTime;
         if (_timeSpeedUp <= 0)
         {
-            _player.GetComponent<MoveTest>().MoveSpeed -= _speedBoost;
+            _player.GetComponent<Move>().MoveSpeed -= _speedBoost;
             Destroy(gameObject);
         }
     }
@@ -27,7 +27,7 @@ public class SpeedUp_Skill : MonoBehaviour
             isCompareTag = true;
             // other.GetComponent<IEventHappen>().EventHappen(true);
             _player = other.gameObject;
-            _player.GetComponent<MoveTest>().MoveSpeed += _speedBoost;
+            _player.GetComponent<Move>().MoveSpeed += _speedBoost;
             // other.GetComponent<IEventHappen>().EventHappen(false);
         }
     }
