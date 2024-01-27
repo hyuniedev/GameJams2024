@@ -20,11 +20,11 @@ public class Magnet_Skill : Skill
         if (!_active) return;
         if (!_spawned)
         {
-            _handPos = _player.GetComponent<PlayerMoverment>().handPos.gameObject;
+            _handPos = _player.GetComponent<Move>().hand;
             magnet = Instantiate(_magnetGameObject, _handPos.transform);
             _spawned = true;
         }
-
+        magnet.GetComponent<Magnet>().facingRight = _player.GetComponent<Move>().checkRight();
         _timeCount += Time.deltaTime;
         if (_timeCount >= _time)
         {
