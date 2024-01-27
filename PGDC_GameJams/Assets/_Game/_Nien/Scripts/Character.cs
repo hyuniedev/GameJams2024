@@ -23,6 +23,7 @@ public class Character : MonoBehaviour
     public float MoveSpeed
     {
         get => moveSpeed;
+        
         set => moveSpeed = value;
     }
 
