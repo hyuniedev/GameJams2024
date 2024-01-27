@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+
     [SerializeField] private float moveSpeed;
     [SerializeField] private float forceJump;
+    private float addSpeed = 4f;
+
     private bool hasSkill;
     [SerializeField] private bool hasBoom = false;
     [SerializeField] private GameObject BoomSprite;
@@ -35,6 +38,7 @@ public class Character : MonoBehaviour
     {
         // CoreGame.resetTimeBoom();
         hasBoom = !hasBoom;
+        MoveSpeed = HasBoom ? MoveSpeed + addSpeed : MoveSpeed;
         BoomSprite.SetActive(hasBoom);
     }
 }
