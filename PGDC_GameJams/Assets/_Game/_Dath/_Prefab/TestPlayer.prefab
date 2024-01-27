@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 275136208453898016, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: TestPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 3979564877679324458, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_RootOrder
@@ -55,5 +55,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 275136208453898010, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
+--- !u!1 &4830229479675104383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 275136208453898016, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
+  m_PrefabInstance: {fileID: 4672791318053356383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4930579816206014532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4830229479675104383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543072d78efee5a40aa450aa02b13e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  forceJump: 0
+  hasBoom: 0
+  BoomSprite: {fileID: 0}
+  rb: {fileID: 0}
+  spritePlayer: {fileID: 0}
+  PlayerNumber: 0
+  hand: {fileID: 0}
