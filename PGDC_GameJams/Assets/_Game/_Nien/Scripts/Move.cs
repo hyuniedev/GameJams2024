@@ -15,18 +15,20 @@ public class Move : Character
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject spritePlayer;
     private String tagPlayer = null;
-    private bool checkThrowBoom;
-    [SerializeField] private GameObject Boom;
+    private float timeHoldBoom = 0;
 
     private void Awake()
     {
         input = new InputSystem();
         _layerMask = LayerMask.GetMask("Ground");
         tagPlayer = this.tag;
+        this.setBoom();
     }
 
     private void FixedUpdate()
     {
+        if(HasBoom) timeHoldBoom += Time.fixedDeltaTime * 2;
+        Debug.Log(timeHoldBoom);
         DiChuyen();
         Nhay();
     }
@@ -61,10 +63,15 @@ public class Move : Character
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.tag.Equals("Player") || other.gameObject.tag.Equals("Player2") ||
-            other.gameObject.tag.Equals("Player3") || other.gameObject.tag.Equals("Player4"))
+        if (timeHoldBoom > 2.0f)
         {
-                Boom.transform.SetParent(other.transform);
+            if (other.gameObject.tag.Equals("Player") || other.gameObject.tag.Equals("Player2") ||
+                other.gameObject.tag.Equals("Player3") || other.gameObject.tag.Equals("Player4"))
+            {
+                other.gameObject.GetComponent<Character>().changeStateBoom();
+                this.changeStateBoom();
+                timeHoldBoom = 0;
+            }
         }
     }
 

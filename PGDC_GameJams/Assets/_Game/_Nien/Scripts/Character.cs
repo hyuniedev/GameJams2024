@@ -7,7 +7,8 @@ public class Character : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float forceJump;
     private bool hasSkill;
-    private bool hasBoom;
+    [SerializeField] private bool hasBoom;
+    [SerializeField] private GameObject BoomSprite;
     public float ForceJump
     {
         get => forceJump;
@@ -25,9 +26,13 @@ public class Character : MonoBehaviour
         set => moveSpeed = value;
     }
 
-    public bool HasSkill
+    public void setBoom()
     {
-        get => hasSkill;
-        set => hasSkill = value;
+        BoomSprite.SetActive(hasBoom);
     }
+    public void changeStateBoom()
+    {
+        hasBoom = !hasBoom;
+        BoomSprite.SetActive(hasBoom);
+    } 
 }
