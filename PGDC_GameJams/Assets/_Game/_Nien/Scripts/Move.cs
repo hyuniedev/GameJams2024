@@ -15,14 +15,12 @@ public class Move : Character
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject spritePlayer;
     [SerializeField] private int PlayerNumber;
-    private String tagPlayer = null;
     private float timeHoldBoom = 0;
 
     private void Awake()
     {
         input = new InputSystem();
         _layerMask = LayerMask.GetMask("Ground");
-        tagPlayer = this.tag;
         this.setBoom();
     }
 
