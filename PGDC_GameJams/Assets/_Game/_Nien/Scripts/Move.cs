@@ -28,7 +28,6 @@ public class Move : Character
     private void FixedUpdate()
     {
         if(HasBoom) timeHoldBoom += Time.fixedDeltaTime * 2;
-        Debug.Log(timeHoldBoom);
         DiChuyen();
         Nhay();
     }
