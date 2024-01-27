@@ -15,6 +15,7 @@ public class Move : Character
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject spritePlayer;
     [SerializeField] private int PlayerNumber;
+    [SerializeField] private Animator _animator;
     public GameObject hand;
     private float timeHoldBoom = 0;
     private bool okMove = true;
@@ -28,6 +29,7 @@ public class Move : Character
 
     private void FixedUpdate()
     {
+        Debug.Log(CheckGround());
         if(HasBoom) timeHoldBoom += Time.fixedDeltaTime * 2;
         DiChuyen();
         Nhay();
@@ -37,9 +39,22 @@ public class Move : Character
         if (CheckGround() && jumpingVec.y > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x,jumpingVec.y * ForceJump);
-        }else if (!CheckGround() && jumpingVec.y < 0)
+        }
+        else if (!CheckGround() && jumpingVec.y < 0)
         {
+            _animator.SetFloat("jump",0);
             rb.velocity = new Vector2(rb.velocity.x, jumpingVec.y * (ForceJump / 2));
+        }
+        if (rb.velocity.y > 0)
+        {
+            _animator.Play("Jumping");
+            _animator.SetFloat("jump",0);
+        }else if (rb.velocity.y < 0)
+        {
+            _animator.SetFloat("jump",1);
+        }else if (CheckGround() && rb.velocity.x == 0)
+        {
+            _animator.SetFloat("jump",2);
         }
     }
     private void DiChuyen()
@@ -55,12 +70,24 @@ public class Move : Character
                 isRight = false;
             }
             spritePlayer.transform.rotation = Quaternion.Euler(new Vector3(0,isRight?0:180,0));
+            if (CheckGround())
+            {
+                if (Mathf.Abs(rb.velocity.x) > 0)
+                {
+                    _animator.Play("Run");
+                }
+                else
+                {
+                    _animator.Play("idle");
+                }
+            }
         }
     }
 
     private bool CheckGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, 1.1f, _layerMask);
+        Debug.DrawLine(transform.position,transform.position + Vector3.down * 1.6f,Color.green);
+        RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, 1.6f, _layerMask);
         return hit.collider != null;
     }
 
