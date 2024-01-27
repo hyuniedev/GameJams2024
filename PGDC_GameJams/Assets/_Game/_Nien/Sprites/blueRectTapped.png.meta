@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 959a19f8e21b1074f863606443e2a09c
+=======
 guid: bec4c029afea3a34d8930d966ef5a01c
+>>>>>>> main
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -78,6 +82,8 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+<<<<<<< HEAD
+=======
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -90,6 +96,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+>>>>>>> main
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -102,7 +109,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+<<<<<<< HEAD
+    buildTarget: Android
+=======
     buildTarget: iPhone
+>>>>>>> main
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -114,7 +125,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+<<<<<<< HEAD
+    buildTarget: Windows Store Apps
+=======
     buildTarget: Android
+>>>>>>> main
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
