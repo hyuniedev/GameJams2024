@@ -249,13 +249,21 @@ PrefabInstance:
       propertyPath: hasBoom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 275136208453898010, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
+      propertyPath: PlayerNumber
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 275136208453898016, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
     - target: {fileID: 275136208453898016, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_TagString
-      value: Player2
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 275136208453898022, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 454574831265319614, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_text
@@ -267,11 +275,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3979564877679324458, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.97
       objectReference: {fileID: 0}
     - target: {fileID: 3979564877679324458, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -3.58
       objectReference: {fileID: 0}
     - target: {fileID: 3979564877679324458, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -536,13 +544,21 @@ PrefabInstance:
       propertyPath: hasBoom
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 275136208453898010, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
+      propertyPath: PlayerNumber
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 275136208453898016, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_Name
       value: Player3
       objectReference: {fileID: 0}
     - target: {fileID: 275136208453898016, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_TagString
-      value: Player3
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 275136208453898022, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 454574831265319614, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_text
@@ -775,11 +791,6 @@ MonoBehaviour:
   - {fileID: 260059826}
   - {fileID: 1005915467}
   - {fileID: 102803364}
-  smoothTime: 0.5
-  minZoom: 40
-  maxZoom: 10
-  zoomLimiter: 50
-  offset: {x: 0, y: 2, z: -10}
 --- !u!1 &1366391435
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,8 +838,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedTime: 2
   txtBoomTime: {fileID: 1244328381}
-  phut: 1
-  giay: 30
 --- !u!1001 &275136209539566523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -839,6 +848,10 @@ PrefabInstance:
     - target: {fileID: 275136208453898010, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: Boom
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 275136208453898010, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
+      propertyPath: PlayerNumber
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 275136208453898010, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: spritePlayer
@@ -895,6 +908,10 @@ PrefabInstance:
     - target: {fileID: 275136208453898020, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 275136208453898022, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 275136210212148305, guid: c317e4202cfcd1c4aa8b8a303f60d2f2, type: 3}
       propertyPath: m_RootOrder
