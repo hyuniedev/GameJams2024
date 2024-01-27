@@ -14,6 +14,7 @@ public class Move : Character
     private LayerMask _layerMask;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject spritePlayer;
+    [SerializeField] private int PlayerNumber;
     private String tagPlayer = null;
     private float timeHoldBoom = 0;
 
@@ -64,8 +65,7 @@ public class Move : Character
     {
         if (timeHoldBoom > 1.0f)
         {
-            if (other.gameObject.tag.Equals("Player") || other.gameObject.tag.Equals("Player2") ||
-                other.gameObject.tag.Equals("Player3") || other.gameObject.tag.Equals("Player4"))
+            if (other.gameObject.tag.Equals("Player"))
             {
                 other.gameObject.GetComponent<Character>().changeStateBoom();
                 this.changeStateBoom();
@@ -96,25 +96,25 @@ public class Move : Character
     private void OnEnable()
     {
         input.Enable();
-        if (tagPlayer.Equals("Player"))
+        if (PlayerNumber==1)
         {
             input.Player.Player1.performed += OnMovePlayerEnter;
             input.Player.Player1.canceled += OnMovePlayerExit;
             input.Player.Player1.performed += OnJumpingEnter;
             input.Player.Player1.canceled += OnJumpingExit;
-        }else if (tagPlayer.Equals("Player2"))
+        }else if (PlayerNumber==2)
         {
             input.Player.Player2.performed += OnMovePlayerEnter;
             input.Player.Player2.canceled += OnMovePlayerExit;
             input.Player.Player2.performed += OnJumpingEnter;
             input.Player.Player2.canceled += OnJumpingExit;
-        }else if (tagPlayer.Equals("Player3"))
+        }else if (PlayerNumber==3)
         {
             input.Player.Player3.performed += OnMovePlayerEnter;
             input.Player.Player3.canceled += OnMovePlayerExit;
             input.Player.Player3.performed += OnJumpingEnter;
             input.Player.Player3.canceled += OnJumpingExit;
-        }else if (tagPlayer.Equals("Player4"))
+        }else if (PlayerNumber==4)
         {
             input.Player.Player4.performed += OnMovePlayerEnter;
             input.Player.Player4.canceled += OnMovePlayerExit;
@@ -126,30 +126,40 @@ public class Move : Character
     private void OnDisable()
     {
         input.Disable();
-        if (tagPlayer.Equals("Player"))
+        if (PlayerNumber==1)
         {
             input.Player.Player1.performed -= OnMovePlayerEnter;
             input.Player.Player1.canceled -= OnMovePlayerExit;
             input.Player.Player1.performed -= OnJumpingEnter;
             input.Player.Player1.canceled -= OnJumpingExit;
-        }else if (tagPlayer.Equals("Player2"))
+        }else if (PlayerNumber==2)
         {
             input.Player.Player2.performed -= OnMovePlayerEnter;
             input.Player.Player2.canceled -= OnMovePlayerExit;
             input.Player.Player2.performed -= OnJumpingEnter;
             input.Player.Player2.canceled -= OnJumpingExit;
-        }else if (tagPlayer.Equals("Player3"))
+        }else if (PlayerNumber==3)
         {
             input.Player.Player3.performed -= OnMovePlayerEnter;
             input.Player.Player3.canceled -= OnMovePlayerExit;
             input.Player.Player3.performed -= OnJumpingEnter;
             input.Player.Player3.canceled -= OnJumpingExit;
-        }else if (tagPlayer.Equals("Player4"))
+        }else if (PlayerNumber==4)
         {
             input.Player.Player4.performed -= OnMovePlayerEnter;
             input.Player.Player4.canceled -= OnMovePlayerExit;
             input.Player.Player4.performed -= OnJumpingEnter;
             input.Player.Player4.canceled -= OnJumpingExit;
         }
+    }
+
+    public bool checkMove()
+    {
+        return rb.velocity.x != 0;
+    }
+
+    public bool checkRight()
+    {
+        return rb.velocity.x > 0;
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 275136208453898010}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,10 +69,10 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 7
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: bdbe48c8045562f4bbf9577560eddf2c, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &275136208453898010
 MonoBehaviour:
@@ -92,6 +92,7 @@ MonoBehaviour:
   BoomSprite: {fileID: 8850306916658786103}
   rb: {fileID: 275136208453898022}
   spritePlayer: {fileID: 1725165275695430464}
+  PlayerNumber: 0
 --- !u!1 &275136208707604725
 GameObject:
   m_ObjectHideFlags: 0
