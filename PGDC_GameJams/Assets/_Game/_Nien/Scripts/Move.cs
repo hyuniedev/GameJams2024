@@ -13,22 +13,25 @@ public class Move : Character
     private bool isGround;
     private LayerMask _layerMask;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private GameObject spritePlayer;
     private String tagPlayer = null;
+    private float timeHoldBoom = 0;
 
     private void Awake()
     {
         input = new InputSystem();
         _layerMask = LayerMask.GetMask("Ground");
         tagPlayer = this.tag;
+        this.setBoom();
     }
 
     private void FixedUpdate()
     {
-        Debug.Log(tagPlayer);
+        if(HasBoom) timeHoldBoom += Time.fixedDeltaTime * 2;
+        Debug.Log(timeHoldBoom);
         DiChuyen();
         Nhay();
     }
-
     private void Nhay()
     {
         if (CheckGround() && jumpingVec.y > 0)
@@ -49,7 +52,7 @@ public class Move : Character
         {
             isRight = false;
         }
-        transform.rotation = Quaternion.Euler(new Vector3(0,isRight?0:180,0));
+        spritePlayer.transform.rotation = Quaternion.Euler(new Vector3(0,isRight?0:180,0));
     }
 
     private bool CheckGround()
@@ -57,6 +60,21 @@ public class Move : Character
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, 1.1f, _layerMask);
         return hit.collider != null;
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (timeHoldBoom > 2.0f)
+        {
+            if (other.gameObject.tag.Equals("Player") || other.gameObject.tag.Equals("Player2") ||
+                other.gameObject.tag.Equals("Player3") || other.gameObject.tag.Equals("Player4"))
+            {
+                other.gameObject.GetComponent<Character>().changeStateBoom();
+                this.changeStateBoom();
+                timeHoldBoom = 0;
+            }
+        }
+    }
+
     private void OnMovePlayerEnter(InputAction.CallbackContext value)
     {
         directionMove = value.ReadValue<Vector2>();
