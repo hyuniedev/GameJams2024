@@ -11,13 +11,16 @@ public class Skill : MonoBehaviour
     {
     }
 
+    // no deo chay ???
     protected GameObject GetPlayerInFront(Transform handPos)
     {
         // Draw line direction of player
-        RaycastHit2D hit = Physics2D.Raycast(handPos.position, transform.forward, 10f, _layerMask);
-        Debug.DrawRay(handPos.position, transform.forward * 10, Color.red);
-        return hit == false ? null : hit.collider.gameObject;
+        RaycastHit2D hit = Physics2D.Raycast(handPos.position, handPos.forward, 50f, _layerMask);
+        Debug.DrawRay(handPos.position, handPos.forward * 50f, Color.red);
+
+        return hit.collider != null ? hit.collider.gameObject : null;
     }
+
 
     protected Vector2 GetDirectionOfPlayer(GameObject player)
     {
@@ -36,24 +39,23 @@ public class Skill : MonoBehaviour
 
     // Todo : Sử dụng trong script của rocket
 
-    // protected List<GameObject> GetPlayerInCircle(GameObject player, float radius)
-    // {
-    //     void OnDrawGizmosSelected()
-    //     {
-    //         Gizmos.color = Color.red;
-    //         Gizmos.DrawWireSphere(transform.position, radius);
-    //     }
-    //     Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
-    //     List<GameObject> players = new List<GameObject>();
-    //     foreach (Collider2D collider in colliders)
-    //     {
-    //         if (collider.gameObject.tag == "Player")
-    //         {
-    //             players.Add(collider.gameObject);
-    //         }
-    //     }
-    //     return players.Count > 0 ? players : null;
-    // }
+    protected List<GameObject> GetPlayerInCircle(GameObject player, float radius)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+        List<GameObject> players = new List<GameObject>();
+
+        foreach (Collider2D collider in colliders)
+        {
+            GameObject playerObject = collider.gameObject;
+            if (playerObject.CompareTag("Player"))
+            {
+                players.Add(playerObject);
+            }
+        }
+
+        return players.Count > 0 ? players : null;
+    }
+
 
     protected void OnTriggerEnter2D(Collider2D other)
     {
@@ -61,7 +63,6 @@ public class Skill : MonoBehaviour
         {
             isCompareTag = true;
             UseSkill(other.gameObject);
-            Debug.Log("Use skill");
         }
     }
 
