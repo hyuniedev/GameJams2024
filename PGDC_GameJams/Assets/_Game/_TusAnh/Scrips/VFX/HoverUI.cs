@@ -2,8 +2,6 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace _Game._TusAnh.Scrips
-{
     public class HoverUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         private Vector3 originalScale; 
@@ -37,4 +35,3 @@ namespace _Game._TusAnh.Scrips
             this.duration = duration;
         }
     }
-}
