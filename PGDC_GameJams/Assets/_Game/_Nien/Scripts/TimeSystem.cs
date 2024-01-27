@@ -1,8 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class TimeSystem : MonoBehaviour
 {
@@ -13,28 +12,32 @@ public class TimeSystem : MonoBehaviour
     private bool isEnd = false;
     void FixedUpdate()
     {
-        if (!isEnd)
+        String g = giay.ToString().Length == 1 ? "0" + giay : giay+"";
+        txtBoomTime.text = "00" + ":" + g;
+        congdon += Time.fixedDeltaTime * speedTime;
+        if (congdon > 1)
         {
-            String g = giay.ToString().Length == 1 ? "0" + giay : giay+"";
-            txtBoomTime.text = "00" + ":" + g;
-            congdon += Time.fixedDeltaTime * speedTime;
-            if (congdon > 1)
-            {
-                giay--;
-                congdon = 0;
-            }
+            giay--;
+            congdon = 0;
         }
-
         if (giay == 0)
         {
-            Time.timeScale = 0;
-            isEnd = true;
-            foreach (var VARIABLE in FindObjectsOfType<Character>())
+            Character[] dsCharacter = FindObjectsOfType<Character>();
+            foreach (var VARIABLE in dsCharacter)
             {
                 if (VARIABLE.HasBoom)
                 {
-                    txtBoomTime.text = VARIABLE.gameObject.name + "";
+                    VARIABLE.gameObject.SetActive(false);
                 }
+            }
+            dsCharacter = FindObjectsOfType<Character>();
+            if (dsCharacter.Length > 1)
+            {
+                dsCharacter[0].changeStateBoom();
+            }
+            else
+            {
+                Time.timeScale = 0;
             }
         }
     }
