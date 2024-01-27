@@ -25,6 +25,14 @@ public class Move : Character
         this.setBoom();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            this.rb.AddForce(Vector2.left * 1500);
+        }
+    }
+
     private void FixedUpdate()
     {
         if(HasBoom) timeHoldBoom += Time.fixedDeltaTime * 2;
