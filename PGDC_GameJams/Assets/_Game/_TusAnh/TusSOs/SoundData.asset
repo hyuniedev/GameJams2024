@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   backGroundMusic:
   - {fileID: 8300000, guid: c90f6c4d27f627a4da4596e5aae4e0ff, type: 3}
+  - {fileID: 8300000, guid: 8be75592abfc47d46a2bcff219eca4d4, type: 3}
   sfx:
   - {fileID: 8300000, guid: 9d21c4860548609458ac54974dd93c31, type: 3}
   audioMixer: {fileID: 24100000, guid: effbf7301e4aff64caee0bc16a63464e, type: 2}
