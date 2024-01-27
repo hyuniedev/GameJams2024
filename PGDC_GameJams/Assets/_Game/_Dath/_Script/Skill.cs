@@ -56,6 +56,20 @@ public class Skill : MonoBehaviour
         return players.Count > 0 ? players : null;
     }
 
+    public void ShockWave(Transform trans, float radius, float time, float boomForce)
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, radius);
+        foreach (Collider2D collider in colliders)
+        {
+            GameObject playerArround = collider.gameObject;
+
+            if (playerArround.CompareTag("Player"))
+            {
+                playerArround.GetComponent<Rigidbody2D>().AddForce((playerArround.transform.position - transform.position).normalized * boomForce, ForceMode2D.Impulse);
+                playerArround.GetComponent<IEvent>().HasEvent(time);
+            }
+        }
+    }
 
     protected void OnTriggerEnter2D(Collider2D other)
     {

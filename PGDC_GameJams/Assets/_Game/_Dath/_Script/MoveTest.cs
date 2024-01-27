@@ -39,11 +39,11 @@ public class MoveTest : Character, IEvent
     {
         if (CheckGround() && jumpingVec.y > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingVec.y * ForceJump);
+            rb.velocity = new Vector2(rb.velocity.x, 1 * ForceJump);
         }
         else if (!CheckGround() && jumpingVec.y < 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingVec.y * (ForceJump / 2));
+            rb.velocity = new Vector2(rb.velocity.x, -1 * (ForceJump / 2));
         }
     }
     private void DiChuyen()

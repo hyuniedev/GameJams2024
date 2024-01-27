@@ -33,7 +33,7 @@ public class Rocket_Skill : Skill
 
             // day lui player
             player.GetComponent<Rigidbody2D>().velocity = -direction * 20f;
-            player.GetComponent<IEvent>().HasEvent(0.5f);
+            player.GetComponent<IEvent>().HasEvent(0.3f);
             // player.GetComponent<Rigidbody2D>().AddForce(-direction * 4500f);
         }
     }

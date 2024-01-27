@@ -28,7 +28,7 @@ public class Move : Character
 
     private void FixedUpdate()
     {
-        if(HasBoom) timeHoldBoom += Time.fixedDeltaTime * 2;
+        if (HasBoom) timeHoldBoom += Time.fixedDeltaTime * 2;
         DiChuyen();
         Nhay();
     }
@@ -36,8 +36,9 @@ public class Move : Character
     {
         if (CheckGround() && jumpingVec.y > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x,jumpingVec.y * ForceJump);
-        }else if (!CheckGround() && jumpingVec.y < 0)
+            rb.velocity = new Vector2(rb.velocity.x, jumpingVec.y * ForceJump);
+        }
+        else if (!CheckGround() && jumpingVec.y < 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpingVec.y * (ForceJump / 2));
         }
@@ -46,15 +47,16 @@ public class Move : Character
     {
         if (okMove)
         {
-            rb.velocity = new Vector2(MoveSpeed * directionMove.x,rb.velocity.y);
+            rb.velocity = new Vector2(MoveSpeed * directionMove.x, rb.velocity.y);
             if (directionMove.x > 0)
             {
                 isRight = true;
-            }else if (directionMove.x < 0)
+            }
+            else if (directionMove.x < 0)
             {
                 isRight = false;
             }
-            spritePlayer.transform.rotation = Quaternion.Euler(new Vector3(0,isRight?0:180,0));
+            spritePlayer.transform.rotation = Quaternion.Euler(new Vector3(0, isRight ? 0 : 180, 0));
         }
     }
 
@@ -84,7 +86,7 @@ public class Move : Character
 
     private void OnMovePlayerExit(InputAction.CallbackContext value)
     {
-        directionMove = new Vector2(0,rb.velocity.y);
+        directionMove = new Vector2(0, rb.velocity.y);
     }
 
     private void OnJumpingEnter(InputAction.CallbackContext value)
@@ -99,25 +101,28 @@ public class Move : Character
     private void OnEnable()
     {
         input.Enable();
-        if (PlayerNumber==1)
+        if (PlayerNumber == 1)
         {
             input.Player.Player1.performed += OnMovePlayerEnter;
             input.Player.Player1.canceled += OnMovePlayerExit;
             input.Player.Player1.performed += OnJumpingEnter;
             input.Player.Player1.canceled += OnJumpingExit;
-        }else if (PlayerNumber==2)
+        }
+        else if (PlayerNumber == 2)
         {
             input.Player.Player2.performed += OnMovePlayerEnter;
             input.Player.Player2.canceled += OnMovePlayerExit;
             input.Player.Player2.performed += OnJumpingEnter;
             input.Player.Player2.canceled += OnJumpingExit;
-        }else if (PlayerNumber==3)
+        }
+        else if (PlayerNumber == 3)
         {
             input.Player.Player3.performed += OnMovePlayerEnter;
             input.Player.Player3.canceled += OnMovePlayerExit;
             input.Player.Player3.performed += OnJumpingEnter;
             input.Player.Player3.canceled += OnJumpingExit;
-        }else if (PlayerNumber==4)
+        }
+        else if (PlayerNumber == 4)
         {
             input.Player.Player4.performed += OnMovePlayerEnter;
             input.Player.Player4.canceled += OnMovePlayerExit;
@@ -129,25 +134,28 @@ public class Move : Character
     private void OnDisable()
     {
         input.Disable();
-        if (PlayerNumber==1)
+        if (PlayerNumber == 1)
         {
             input.Player.Player1.performed -= OnMovePlayerEnter;
             input.Player.Player1.canceled -= OnMovePlayerExit;
             input.Player.Player1.performed -= OnJumpingEnter;
             input.Player.Player1.canceled -= OnJumpingExit;
-        }else if (PlayerNumber==2)
+        }
+        else if (PlayerNumber == 2)
         {
             input.Player.Player2.performed -= OnMovePlayerEnter;
             input.Player.Player2.canceled -= OnMovePlayerExit;
             input.Player.Player2.performed -= OnJumpingEnter;
             input.Player.Player2.canceled -= OnJumpingExit;
-        }else if (PlayerNumber==3)
+        }
+        else if (PlayerNumber == 3)
         {
             input.Player.Player3.performed -= OnMovePlayerEnter;
             input.Player.Player3.canceled -= OnMovePlayerExit;
             input.Player.Player3.performed -= OnJumpingEnter;
             input.Player.Player3.canceled -= OnJumpingExit;
-        }else if (PlayerNumber==4)
+        }
+        else if (PlayerNumber == 4)
         {
             input.Player.Player4.performed -= OnMovePlayerEnter;
             input.Player.Player4.canceled -= OnMovePlayerExit;
