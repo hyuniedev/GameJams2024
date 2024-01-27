@@ -20,7 +20,7 @@ public class SetSizeCinemaChine : MonoBehaviour
         _camChine.m_Lens.OrthographicSize = size;
         _camChine.transform.position = center;
     }
-    
+
     private (Vector3 center, float size) CalculaterOrthoSize()
     {
         var bounds = new Bounds();
@@ -29,10 +29,10 @@ public class SetSizeCinemaChine : MonoBehaviour
             bounds.Encapsulate(ccTarget.m_Targets[i].target.position);
         }
         bounds.Expand(_buffer);
-    
+
         var vertical = bounds.size.y;
         var horizontal = bounds.size.x * 6 / 9;
-    
+
         var size = Mathf.Max(horizontal, vertical) * 0.5f;
         var center = bounds.center + new Vector3(0, 0, -10);
         return (center, size);

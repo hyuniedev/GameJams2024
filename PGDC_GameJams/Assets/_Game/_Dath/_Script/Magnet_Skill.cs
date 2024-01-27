@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Magnet_Skill : Skill
 {
-    bool _active = false;
+    bool _active;
     [SerializeField] float _radius = 5f;
     [SerializeField] float _force = 5f;
     GameObject _player;
-    float _time = 3f;
+    float _time = 13f;
     bool _spawned = false;
     float _timeCount = 0f;
     GameObject magnet;
@@ -18,9 +18,11 @@ public class Magnet_Skill : Skill
     private void Update()
     {
         if (!_active) return;
+        Debug.Log("Active");
         if (!_spawned)
         {
-            _handPos = _player.GetComponent<Move>().hand;
+            Debug.Log("Spawned");
+            _handPos = _player.GetComponent<MoveTest>().hand;
             magnet = Instantiate(_magnetGameObject, _handPos.transform);
             _spawned = true;
         }
@@ -37,7 +39,9 @@ public class Magnet_Skill : Skill
     protected override void UseSkill(GameObject player)
     {
         _active = true;
+        Debug.Log(_active);
         _player = player;
+        Debug.Log(_player);
     }
 
 }
