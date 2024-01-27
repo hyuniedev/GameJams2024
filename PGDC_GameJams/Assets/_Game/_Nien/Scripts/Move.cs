@@ -15,6 +15,7 @@ public class Move : Character
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject spritePlayer;
     [SerializeField] private int PlayerNumber;
+    public GameObject hand;
     private float timeHoldBoom = 0;
 
     private void Awake()
@@ -61,7 +62,7 @@ public class Move : Character
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (timeHoldBoom > 1.0f)
+        if (timeHoldBoom > 0.8f)
         {
             if (other.gameObject.tag.Equals("Player"))
             {
