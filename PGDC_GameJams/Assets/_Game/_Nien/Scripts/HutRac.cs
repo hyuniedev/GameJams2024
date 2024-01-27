@@ -13,14 +13,17 @@ public class HutRac : MonoBehaviour
         if (check)
         {
             Collider2D[] ds = Physics2D.OverlapCircleAll(transform.position, 15f);
+            
             foreach (var VARIABLE in ds)
             {
                 if (VARIABLE.gameObject.tag.Equals("Player"))
                 {
                     Vector2 direc = this.transform.position - VARIABLE.transform.position;
-                    VARIABLE.gameObject.GetComponent<Rigidbody2D>().velocity -= direc.normalized * 20;
+                    VARIABLE.gameObject.GetComponent<Rigidbody2D>().AddForce(direc * 20);
                 }
             }
+
+            check = false;
         }
     }
 
