@@ -9,7 +9,7 @@ public class Move : Character
     private InputSystem input = null;
     private Vector2 directionMove = Vector2.zero;
     private Vector2 jumpingVec = Vector2.zero;
-    private bool isRight;
+    private bool isRight = true;
     private bool isGround;
     private LayerMask _layerMask;
     [SerializeField] private Rigidbody2D rb;
@@ -159,6 +159,6 @@ public class Move : Character
 
     public bool checkRight()
     {
-        return rb.velocity.x > 0;
+        return isRight;
     }
 }
