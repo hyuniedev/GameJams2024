@@ -6,9 +6,11 @@ using UnityEngine;
 
 public class Magnet : MonoBehaviour
 {
+    public bool facingRight = true;
     float _radius = 15f;
     float _strength = 1f;
     float _maxStrength = 5f;
+
     private void Update()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _radius);
@@ -18,14 +20,20 @@ public class Magnet : MonoBehaviour
 
             if (playerVictim.CompareTag("Player") && !transform.IsChildOf(playerVictim.transform))
             {
-                if (playerVictim.transform.position.x > transform.position.x)
-                {
+                float checkPos = playerVictim.transform.position.x - transform.position.x;
+                Rigidbody2D rb = playerVictim.GetComponent<Rigidbody2D>();
+                Vector2 direction = transform.position - playerVictim.transform.position;
+                direction.Normalize();
 
-                    Debug.Log("Player Victim" + playerVictim.name);
-                    Rigidbody2D rb = playerVictim.GetComponent<Rigidbody2D>();
-                    Vector2 direction = transform.position - playerVictim.transform.position;
-                    // rb.AddForce(direction * 2f);
-                    rb.velocity = direction * 2f;
+                if (facingRight)
+                {
+                    float distanceX = playerVictim.transform.position.x - transform.position.x;
+                    if (distanceX > 0) rb.velocity = direction * _strength;
+                }
+                if (!facingRight)
+                {
+                    float distanceX = playerVictim.transform.position.x - transform.position.x;
+                    if (distanceX < 0) rb.velocity = direction * _strength;
                 }
 
             }

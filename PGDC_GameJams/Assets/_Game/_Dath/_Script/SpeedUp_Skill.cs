@@ -10,15 +10,15 @@ public class SpeedUp_Skill : Skill
     protected override void UseSkill(GameObject player)
     {
 
-        player.GetComponent<PlayerMoverment>().moveSpeed += _speedBoost;
-        var playerScript = player.GetComponent<PlayerMoverment>();
+        player.GetComponent<Move>().MoveSpeed += _speedBoost;
+        var playerScript = player.GetComponent<Move>();
 
         StartCoroutine(ResetSpeed(playerScript));
     }
 
-    IEnumerator ResetSpeed(PlayerMoverment playerScript)
+    IEnumerator ResetSpeed(Move playerScript)
     {
         yield return new WaitForSeconds(_timeSpeedUp);
-        playerScript.moveSpeed -= _speedBoost;
+        playerScript.MoveSpeed -= _speedBoost;
     }
 }
