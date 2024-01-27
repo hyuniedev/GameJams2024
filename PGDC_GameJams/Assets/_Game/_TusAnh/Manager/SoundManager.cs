@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using _Game._TusAnh.SOs;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UIElements;
 
 
@@ -21,6 +22,7 @@ public class SoundManager : GenericSingleton<SoundManager>
     public PlayerSoundData soundData;
     public AudioSource SfxSource;
     public AudioSource MusicSource;
+    public AudioMixer mixer;
 
     public void Awake()
     {
@@ -28,6 +30,7 @@ public class SoundManager : GenericSingleton<SoundManager>
         MusicSource.loop = true;
         SfxSource = gameObject.AddComponent<AudioSource>();
         SfxSource.loop = false;
+            
     }
 
     public void Start()
@@ -61,5 +64,7 @@ public class SoundManager : GenericSingleton<SoundManager>
     {
         PlayFx(FxID.Click);
     }
+
+  
     
 }
