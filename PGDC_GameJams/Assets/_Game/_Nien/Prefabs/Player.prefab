@@ -87,7 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 25
-  forceJump: 30
+  forceJump: 25
   hasBoom: 0
   BoomSprite: {fileID: 8850306916658786103}
   rb: {fileID: 275136208453898022}
