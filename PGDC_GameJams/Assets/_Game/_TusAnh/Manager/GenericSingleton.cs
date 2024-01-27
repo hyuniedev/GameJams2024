@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
-namespace _Game.Scripts.GameSystem
-{
+
     
 // <> denotes this is a generic class
     public class GenericSingleton<T> : MonoBehaviour where T : Component
@@ -46,4 +45,3 @@ namespace _Game.Scripts.GameSystem
             }
         }
     }
-}

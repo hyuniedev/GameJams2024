@@ -28,7 +28,6 @@ public class Move : Character
     private void FixedUpdate()
     {
         if(HasBoom) timeHoldBoom += Time.fixedDeltaTime * 2;
-        Debug.Log(timeHoldBoom);
         DiChuyen();
         Nhay();
     }
@@ -63,7 +62,7 @@ public class Move : Character
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (timeHoldBoom > 2.0f)
+        if (timeHoldBoom > 1.0f)
         {
             if (other.gameObject.tag.Equals("Player") || other.gameObject.tag.Equals("Player2") ||
                 other.gameObject.tag.Equals("Player3") || other.gameObject.tag.Equals("Player4"))
