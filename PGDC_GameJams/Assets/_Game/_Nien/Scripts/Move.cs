@@ -17,6 +17,7 @@ public class Move : Character
     [SerializeField] private int PlayerNumber;
     public GameObject hand;
     private float timeHoldBoom = 0;
+    private bool okMove = true;
 
     private void Awake()
     {
@@ -43,15 +44,18 @@ public class Move : Character
     }
     private void DiChuyen()
     {
-        rb.velocity = new Vector2(MoveSpeed * directionMove.x,rb.velocity.y);
-        if (directionMove.x > 0)
+        if (okMove)
         {
-            isRight = true;
-        }else if (directionMove.x < 0)
-        {
-            isRight = false;
+            rb.velocity = new Vector2(MoveSpeed * directionMove.x,rb.velocity.y);
+            if (directionMove.x > 0)
+            {
+                isRight = true;
+            }else if (directionMove.x < 0)
+            {
+                isRight = false;
+            }
+            spritePlayer.transform.rotation = Quaternion.Euler(new Vector3(0,isRight?0:180,0));
         }
-        spritePlayer.transform.rotation = Quaternion.Euler(new Vector3(0,isRight?0:180,0));
     }
 
     private bool CheckGround()
@@ -160,5 +164,10 @@ public class Move : Character
     public bool checkRight()
     {
         return isRight;
+    }
+
+    public void changeStateMove()
+    {
+        okMove = !okMove;
     }
 }
