@@ -33,6 +33,7 @@ public class Character : MonoBehaviour
     }
     public void changeStateBoom()
     {
+        TimeSystem.resetTimeBoom();
         hasBoom = !hasBoom;
         BoomSprite.SetActive(hasBoom);
     } 

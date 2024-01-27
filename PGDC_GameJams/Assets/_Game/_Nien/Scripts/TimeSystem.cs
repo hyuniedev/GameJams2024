@@ -8,34 +8,26 @@ public class TimeSystem : MonoBehaviour
 {
     [SerializeField] private float speedTime;
     [SerializeField] private Text txtBoomTime;
-    [SerializeField] private int phut = 0;
-
-    [SerializeField] private int giay = 0;
+    private static int giay = 15;
     private float congdon = 0;
     private bool isEnd = false;
     void FixedUpdate()
     {
         if (!isEnd)
         {
-            String p = phut.ToString().Length == 1 ? "0" + phut : phut+"";
             String g = giay.ToString().Length == 1 ? "0" + giay : giay+"";
-            txtBoomTime.text = p + ":" + g;
+            txtBoomTime.text = "00" + ":" + g;
             congdon += Time.fixedDeltaTime * speedTime;
             if (congdon > 1)
             {
                 giay--;
                 congdon = 0;
             }
-
-            if (giay < 0)
-            {
-                phut--;
-                giay = 59;
-            }
         }
 
-        if (phut == 0 && giay == 0)
+        if (giay == 0)
         {
+            Time.timeScale = 0;
             isEnd = true;
             foreach (var VARIABLE in FindObjectsOfType<Character>())
             {
@@ -45,5 +37,10 @@ public class TimeSystem : MonoBehaviour
                 }
             }
         }
+    }
+
+    public static void resetTimeBoom()
+    {
+        giay = 15;
     }
 }
