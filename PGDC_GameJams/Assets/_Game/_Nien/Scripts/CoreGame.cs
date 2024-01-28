@@ -16,11 +16,7 @@ public class CoreGame : MonoBehaviour
     public GameObject _winPanel;
     private void Start()
     {
-        Character[] charactors = FindObjectsOfType<Character>();
-        foreach (var ch in charactors)
-        {
-            ch.gameObject.SetActive(true);
-        }
+
     }
     void FixedUpdate()
     {
@@ -45,6 +41,7 @@ public class CoreGame : MonoBehaviour
     public void Replay()
     {
         Time.timeScale = 1;
+        _time = 15;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
