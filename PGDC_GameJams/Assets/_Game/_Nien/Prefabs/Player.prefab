@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 275136208453898021}
   - component: {fileID: 275136208453898022}
   - component: {fileID: 275136208453898010}
+  - component: {fileID: 4389123892597458958}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -93,8 +94,21 @@ MonoBehaviour:
   rb: {fileID: 275136208453898022}
   spritePlayer: {fileID: 1725165275695430464}
   PlayerNumber: 0
-  _animator: {fileID: 4933294309568629975}
   hand: {fileID: 823301987274142307}
+  hasEvent: 0
+--- !u!114 &4389123892597458958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275136208453898016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed7e4158fa1b22648b337c8bfd4df6b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _am: {fileID: 4933294309568629975}
 --- !u!1 &275136208707604725
 GameObject:
   m_ObjectHideFlags: 0

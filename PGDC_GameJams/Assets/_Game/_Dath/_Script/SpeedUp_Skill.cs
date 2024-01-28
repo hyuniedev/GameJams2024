@@ -6,7 +6,7 @@ public class SpeedUp_Skill : MonoBehaviour
 {
     bool isCompareTag = false;
     float _speedBoost = 12f;
-    float _timeSpeedUp = 5f;
+    float _timeSpeedUp = 2f;
     GameObject _player;
     private void Update()
     {
@@ -16,8 +16,8 @@ public class SpeedUp_Skill : MonoBehaviour
         _timeSpeedUp -= Time.deltaTime;
         if (_timeSpeedUp <= 0)
         {
-            _player.GetComponent<MoveTest>().MoveSpeed -= _speedBoost;
-            Destroy(gameObject);
+            _player.GetComponent<Move>().MoveSpeed -= _speedBoost;
+            gameObject.SetActive(false);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -27,7 +27,7 @@ public class SpeedUp_Skill : MonoBehaviour
             isCompareTag = true;
             // other.GetComponent<IEventHappen>().EventHappen(true);
             _player = other.gameObject;
-            _player.GetComponent<MoveTest>().MoveSpeed += _speedBoost;
+            _player.GetComponent<Move>().MoveSpeed += _speedBoost;
             // other.GetComponent<IEventHappen>().EventHappen(false);
         }
     }
