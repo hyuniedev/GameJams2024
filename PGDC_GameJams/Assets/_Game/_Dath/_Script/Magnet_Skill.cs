@@ -4,44 +4,63 @@ using UnityEngine;
 
 public class Magnet_Skill : Skill
 {
-    bool _active;
+    private bool active;
+
     [SerializeField] float _radius = 5f;
     [SerializeField] float _force = 5f;
     GameObject _player;
-    float _time = 13f;
+    float _time = 3f;
     bool _spawned = false;
     float _timeCount = 0f;
     GameObject magnet;
     GameObject _handPos;
 
+
     [SerializeField] private GameObject _magnetGameObject;
     private void Update()
     {
-        if (!_active) return;
-        Debug.Log("Active");
+        if (!active) { return; }
         if (!_spawned)
         {
-            Debug.Log("Spawned");
-            _handPos = _player.GetComponent<MoveTest>().hand;
+            _handPos = _player.GetComponent<Move>().hand;
             magnet = Instantiate(_magnetGameObject, _handPos.transform);
             _spawned = true;
         }
         magnet.GetComponent<Magnet>().facingRight = _player.GetComponent<Move>().checkRight();
         _timeCount += Time.deltaTime;
+
+
+        // disable
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = false;
+
+
         if (_timeCount >= _time)
         {
-            _active = false;
+            active = false;
             // Hết thời gian sẽ hủy magnet
+            _player.GetComponent<IEventHappen>().EventHappen(false);
             Destroy(magnet);
+            Destroy(gameObject);
         }
     }
 
     protected override void UseSkill(GameObject player)
     {
-        _active = true;
-        Debug.Log(_active);
+        active = true;
+        Debug.Log(active);
         _player = player;
         Debug.Log(_player);
     }
 
+    new void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player") && !isCompareTag)
+        {
+
+            other.GetComponent<IEventHappen>().EventHappen(true);
+            isCompareTag = true;
+            UseSkill(other.gameObject);
+        }
+    }
 }

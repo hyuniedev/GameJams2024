@@ -9,11 +9,13 @@ public class Magnet : MonoBehaviour
     public bool facingRight = true;
     public float boundInsideRadius = 8f;
     float _radius = 25f;
-    float _strength = 15f;
+    float _strength = 25f;
     float _maxStrength = 5f;
     Vector2 testDirection;
+
     private void Update()
     {
+
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _radius);
         foreach (Collider2D collider in colliders)
         {
@@ -24,7 +26,7 @@ public class Magnet : MonoBehaviour
                 Debug.Log(playerVictim.name);
                 float boundInside = Vector2.Distance(transform.position, playerVictim.transform.position);
                 if (boundInside < boundInsideRadius) return;
-                float checkPos = playerVictim.transform.position.x - transform.position.x;
+                // float checkPos = playerVictim.transform.position.x - transform.position.x;
                 Rigidbody2D rb = playerVictim.GetComponent<Rigidbody2D>();
                 Vector2 direction = transform.position - playerVictim.transform.position;
 

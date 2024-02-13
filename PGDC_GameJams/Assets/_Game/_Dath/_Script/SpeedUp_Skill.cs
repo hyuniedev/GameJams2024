@@ -2,33 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpeedUp_Skill : Skill
+public class SpeedUp_Skill : MonoBehaviour
 {
+    bool isCompareTag = false;
     float _speedBoost = 12f;
     float _timeSpeedUp = 2f;
-
-    protected override void UseSkill(GameObject player)
+    GameObject _player;
+    private void Update()
     {
-
-        player.GetComponent<MoveTest>().MoveSpeed += _speedBoost;
-        MoveTest playerScript = player.GetComponent<MoveTest>();
-
-        StartCoroutine(ResetSpeed(playerScript));
+        if (!isCompareTag) return;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = false;
+        _timeSpeedUp -= Time.deltaTime;
+        if (_timeSpeedUp <= 0)
+        {
+            _player.GetComponent<Move>().MoveSpeed -= _speedBoost;
+            gameObject.SetActive(false);
+        }
     }
-
-    // IEnumerator ResetSpeed(MoveTest playerScript)
-    // {
-    //     Debug.Log("Call Reset Speed");
-    //     // yield return new WaitForSeconds(_timeSpeedUp);
-    //     yield return new WaitForSeconds(_timeSpeedUp);
-    //     playerScript.MoveSpeed -= _speedBoost;
-    // }
-    IEnumerator ResetSpeed(MoveTest playerScript)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Call Reset Speed");
-        yield return new WaitForSeconds(_timeSpeedUp);
-        Debug.Log("After WaitForSeconds");
-        playerScript.MoveSpeed -= _speedBoost;
-        Debug.Log("After reducing speed");
+        if (other.gameObject.CompareTag("Player") && !isCompareTag)
+        {
+            isCompareTag = true;
+            // other.GetComponent<IEventHappen>().EventHappen(true);
+            _player = other.gameObject;
+            _player.GetComponent<Move>().MoveSpeed += _speedBoost;
+            // other.GetComponent<IEventHappen>().EventHappen(false);
+        }
     }
 }

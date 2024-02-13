@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Move : Character
+public class Move : Character, IEvent, IEventHappen
 {
     private InputSystem input = null;
     private Vector2 directionMove = Vector2.zero;
@@ -15,10 +15,12 @@ public class Move : Character
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private GameObject spritePlayer;
     [SerializeField] private int PlayerNumber;
-    [SerializeField] private Animator _animator;
+
     public GameObject hand;
     private float timeHoldBoom = 0;
-    private bool okMove = true;
+    // private bool okMove = true;
+    private bool eventHappening = false;
+    [SerializeField] private bool hasEvent = false;
 
     private void Awake()
     {
@@ -29,8 +31,8 @@ public class Move : Character
 
     private void FixedUpdate()
     {
-        Debug.Log(CheckGround());
-        if(HasBoom) timeHoldBoom += Time.fixedDeltaTime * 2;
+        if (hasEvent) return;
+        if (HasBoom) timeHoldBoom += Time.fixedDeltaTime * 2;
         DiChuyen();
         Nhay();
     }
@@ -38,56 +40,41 @@ public class Move : Character
     {
         if (CheckGround() && jumpingVec.y > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x,jumpingVec.y * ForceJump);
+            rb.velocity = new Vector2(rb.velocity.x, 1 * ForceJump);
         }
         else if (!CheckGround() && jumpingVec.y < 0)
         {
-            _animator.SetFloat("jump",0);
-            rb.velocity = new Vector2(rb.velocity.x, jumpingVec.y * (ForceJump / 2));
+            rb.velocity = new Vector2(rb.velocity.x, -1 * (ForceJump / 2));
         }
-        if (rb.velocity.y > 0)
-        {
-            _animator.Play("Jumping");
-            _animator.SetFloat("jump",0);
-        }else if (rb.velocity.y < 0)
-        {
-            _animator.SetFloat("jump",1);
-        }else if (CheckGround() && rb.velocity.x == 0)
-        {
-            _animator.SetFloat("jump",2);
-        }
+
     }
     private void DiChuyen()
     {
-        if (okMove)
+        // if (okMove)
+        // {
+        if (directionMove.x > 0)
         {
             rb.velocity = new Vector2(MoveSpeed * directionMove.x, rb.velocity.y);
-            if (directionMove.x > 0)
-            {
-                isRight = true;
-            }
-            else if (directionMove.x < 0)
-            {
-                isRight = false;
-            }
-            spritePlayer.transform.rotation = Quaternion.Euler(new Vector3(0,isRight?0:180,0));
-            if (CheckGround())
-            {
-                if (Mathf.Abs(rb.velocity.x) > 0)
-                {
-                    _animator.Play("Run");
-                }
-                else
-                {
-                    _animator.Play("idle");
-                }
-            }
+            isRight = true;
         }
+        else if (directionMove.x < 0)
+        {
+            rb.velocity = new Vector2(MoveSpeed * directionMove.x, rb.velocity.y);
+            isRight = false;
+        }
+        else if (!eventHappening)
+        {
+            float deceleration = 15.5f;
+            rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, deceleration * Time.deltaTime), rb.velocity.y);
+        }
+        spritePlayer.transform.rotation = Quaternion.Euler(new Vector3(0, isRight ? 0 : 180, 0));
+
+        // }
     }
 
-    private bool CheckGround()
+    public bool CheckGround()
     {
-        Debug.DrawLine(transform.position,transform.position + Vector3.down * 1.6f,Color.green);
+        Debug.DrawLine(transform.position, transform.position + Vector3.down * 1.6f, Color.green);
         RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.down, 1.6f, _layerMask);
         return hit.collider != null;
     }
@@ -192,7 +179,7 @@ public class Move : Character
 
     public bool checkMove()
     {
-        return rb.velocity.x != 0;
+        return Mathf.Abs(directionMove.x) > 0;
     }
 
     public bool checkRight()
@@ -200,8 +187,24 @@ public class Move : Character
         return isRight;
     }
 
-    public void changeStateMove()
+    // public void changeStateMove()
+    // {
+    //     okMove = !okMove;
+    // }
+
+    public void HasEvent(float time)
     {
-        okMove = !okMove;
+        hasEvent = true;
+        StartCoroutine(CountDown(time));
+    }
+    IEnumerator CountDown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        hasEvent = false;
+    }
+
+    public void EventHappen(bool isHappen)
+    {
+        eventHappening = isHappen;
     }
 }

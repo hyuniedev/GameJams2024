@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class MoveTest : Character, IEvent
+public class MoveTest : Character, IEvent, IEventHappen
 {
     private InputSystem input = null;
     private Vector2 directionMove = Vector2.zero;
@@ -17,6 +17,8 @@ public class MoveTest : Character, IEvent
     [SerializeField] private int PlayerNumber;
     public GameObject hand;
     private float timeHoldBoom = 0;
+
+    private bool eventHappening = false;
 
 
     [SerializeField] private bool hasEvent = false;
@@ -32,6 +34,7 @@ public class MoveTest : Character, IEvent
     {
         if (hasEvent) return;
         if (HasBoom) timeHoldBoom += Time.fixedDeltaTime * 2;
+        // Debug.Log(MoveSpeed);
         DiChuyen();
         Nhay();
     }
@@ -45,17 +48,24 @@ public class MoveTest : Character, IEvent
         {
             rb.velocity = new Vector2(rb.velocity.x, -1 * (ForceJump / 2));
         }
+
     }
     private void DiChuyen()
     {
-        rb.velocity = new Vector2(MoveSpeed * directionMove.x, rb.velocity.y);
         if (directionMove.x > 0)
         {
+            rb.velocity = new Vector2(MoveSpeed * directionMove.x, rb.velocity.y);
             isRight = true;
         }
         else if (directionMove.x < 0)
         {
+            rb.velocity = new Vector2(MoveSpeed * directionMove.x, rb.velocity.y);
             isRight = false;
+        }
+        else if (!eventHappening)
+        {
+            float deceleration = 15.5f;
+            rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, deceleration * Time.deltaTime), rb.velocity.y);
         }
         spritePlayer.transform.rotation = Quaternion.Euler(new Vector3(0, isRight ? 0 : 180, 0));
     }
@@ -186,5 +196,10 @@ public class MoveTest : Character, IEvent
     {
         yield return new WaitForSeconds(time);
         hasEvent = false;
+    }
+
+    public void EventHappen(bool isHappen)
+    {
+        eventHappening = isHappen;
     }
 }

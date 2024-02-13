@@ -33,6 +33,7 @@ public class Rocket : Skill
         // Tạo một quaternion xoay từ góc tính toán
         Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
         transform.rotation = targetRotation;
+        if (_timer > 10f) gameObject.SetActive(false);
 
     }
 
@@ -45,8 +46,9 @@ public class Rocket : Skill
 
     new void OnTriggerEnter2D(Collider2D other)
     {
-        if (_timer >= _time)
+        if (_timer > _time)
         {
+
             if (other.gameObject.CompareTag("Player"))
             {
                 ShockWave(other.transform, _radius, _time, _boomForce);
